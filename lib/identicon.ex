@@ -8,6 +8,25 @@ defmodule Identicon do
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_odd_squares
+  end
+
+  @doc """
+  Filter odd squares.
+
+  ## Examples
+      iex> image = %Identicon.Image{grid: [{114, 0}, {179, 1}]}
+      iex> image = Identicon.filter_odd_squares(image)
+      iex> image.grid
+      [{114, 0}]
+  """
+
+  def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
+    grid = Enum.filter grid, fn({hex_value, _index}) ->
+      rem(hex_value, 2) == 0
+    end
+
+    %Identicon.Image{image | grid: grid}
   end
 
   @doc """
