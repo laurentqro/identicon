@@ -1,6 +1,10 @@
 # Identicon
 
-**TODO: Add description**
+Enter your username to generate a unique identicon.
+
+`iex> Identicon.main("laurentqro")`
+
+![identicon-example-image](images/laurentqro.png)
 
 ## Installation
 
